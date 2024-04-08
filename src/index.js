@@ -34,7 +34,6 @@ app.get('/', (req, res) => {
 
 app.post('/message', (req, res) => {
     const clientIp = requestIp.getClientIp(req);
-
     const count = requests.get(clientIp);
     requests.set(clientIp, count ? count+1 : 1);
 
@@ -51,7 +50,7 @@ app.post('/message', (req, res) => {
 
 // Metrics endpoint
 app.get('/metrics', (req, res) => {
-    res.set('Content-Type', client.register.contentType)
+    res.set('Content-Type', client.register.contentType);
     res.send(client.register.metrics());
 });
 
